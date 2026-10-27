@@ -1,14 +1,14 @@
 # Full Stack Assessment Case Study (AI Assisted)
 
-**Project:** AI Interview Platform
-**Assessment date:** 27 October 2026
-**Review type:** Runtime check, PRD check, and engineering quality review
-**Product references:** [PRD 01: First Principles (AI Interview Behavior)](https://github.com/rakamindev/ai-interview-platform/wiki) and [PRD 02: Real Simulation (End-to-End Interview)](https://github.com/rakamindev/ai-interview-platform/wiki)
+**Project:** AI Interview Platform<br>
+**Assessment date:** 27 October 2026<br>
+**Review type:** Runtime check, PRD check, and engineering quality review<br>
+**Product references:** [PRD 01: First Principles (AI Interview Behavior)](https://github.com/rakamindev/ai-interview-platform/wiki) and [PRD 02: Real Simulation (End-to-End Interview)](https://github.com/rakamindev/ai-interview-platform/wiki)<br>
 **Assignment reference:** The *Fullstack Product Engineer* case-study brief I was given
 
 ## Executive summary
 
-Ranging several tests, what I found arehe API answers health checks, and the web app builds, a few assessor screens and some API workflows passed earlier checks, using test data. So the services can run. But that doesn’t mean the product can finish the interview like the PRDs.
+The API responds to health checks and the web app builds. A handful of assessor screens and API workflows also passed earlier checks using test data. That shows the services can run, but it does not show the product can complete the interview described in the PRDs.
 
 The clearest bug a user would hit is in the candidate hardware check. When a candidate clicks Retry, the checks get stuck and Start Interview stays disabled. I reproduced this. The internet check also leans on outside test hosts, and those failed in this environment. Reading the source, I spotted two more concerns. The microphone may not get cleaned up, and an old WebSocket disconnect callback may fire late. I haven’t seen either one happen.
 
@@ -191,10 +191,15 @@ The brief asks for a product-engineering submission, not just an app that runs. 
 The assessor screenshots show test assessment data. They prove what was on the screen. They don’t prove the full end-to-end workflow passed.
 
 1. [Candidate internet check failed](./evidence/candidate-internet-check-failed.png)
+   ![Candidate internet check failed](./evidence/candidate-internet-check-failed.png)
 2. [Retry leaves checks waiting](./evidence/candidate-retry-stuck.png)
+   ![Retry leaves checks waiting](./evidence/candidate-retry-stuck.png)
 3. [Assessor assessment list](./evidence/assessor-assessment-list.png)
+   ![Assessor assessment list](./evidence/assessor-assessment-list.png)
 4. [New assessment form](./evidence/assessment-form-loaded.png)
+   ![New assessment form](./evidence/assessment-form-loaded.png)
 5. [Assessment skill selection](./evidence/assessment-skill-form.png)
+   ![Assessment skill selection](./evidence/assessment-skill-form.png)
 
 The microphone cleanup and WebSocket reconnect concerns need controlled automated tests. A screenshot can’t prove timing problems or leaked resources.
 
