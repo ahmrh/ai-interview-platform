@@ -274,6 +274,86 @@ These ideas come from the PRDs and the case-study brief. They’re proposals. Th
 - Let teams share assessment templates. Each template should have an owner, a version history, and clear permissions.
 - Make exports accessible, tied to a rubric version, and clear about which conclusions came from the AI and which came from a person.
 
+## Future enhancement UI concepts
+
+The PDF appendix contains 15 screen mockups: three screens for each of the five enhancement themes above. They use the existing product’s teal-and-white palette, compact top navigation, restrained cards, and plain-language status labels as a visual starting point. The screens are proposals, not implemented product features. Any example people, records, metrics, and policy values are illustrative and should be replaced with approved product and legal requirements before implementation.
+
+The editable mockup source is [future-enhancement-mockups.html](./mockups/future-enhancement-mockups.html).
+
+| Enhancement | Screen concepts |
+|---|---|
+| **1. Candidate trust and accessibility** | 1) Plain-language interview notice, data-use summary, and candidate choice. 2) Guided microphone/browser/network checks with an explicit “could not measure” fallback. 3) Candidate privacy and support center for questions, correction requests, and data requests. |
+| **2. Evidence-based assessor review** | 1) Skill review separating candidate evidence, AI interpretation, rubric anchor, and assessor decision. 2) Coverage map and follow-up for missing evidence, including an unrated “not enough evidence” state. 3) Human decision history showing reviewer rationale and provenance. |
+| **3. Fair and consistent assessment** | 1) Immutable rubric versions and a draft change preview. 2) Assessor calibration using fictional examples and shared reasoning. 3) Aggregate consistency monitoring with small-group suppression and qualified review. |
+| **4. Privacy, security, and operations** | 1) Data inventory, proposed retention controls, and named policy owners. 2) Role-based access matrix and an audit trail for allowed and denied access. 3) Queue and provider health with categorized, recoverable job failures and redacted diagnostics. |
+| **5. Hiring-team workflow** | 1) Candidate comparison against approved role criteria without an unsupported overall ranking. 2) Shared assessment template library with owners, versions, and access. 3) Evidence-linked reviewer discussion, follow-up questions, and a versioned accessible export. |
+
+These concepts are intended to make the recommendations tangible and help stakeholders discuss the workflow. They do not establish that the current application has the screens, controls, integrations, or safeguards shown.
+
+### What each screen shows and why it matters
+
+The notes below explain the intent behind every mockup. The importance is practical: each screen addresses a user need or a control gap identified in the recommendations above. None of the screens implies the feature is already implemented.
+
+#### 1. Candidate trust and accessibility
+
+1. **A clear, plain-language interview notice**
+   - **What it shows:** Before the candidate proceeds, the notice explains what information may be collected, why it is used, which team can access it, the applicable retention policy, and where to ask questions or request an accommodation.
+   - **Why it matters:** Candidates need understandable information before device checks or recording begin. An early, accessible explanation supports informed participation and reduces surprises that could undermine trust.
+2. **Guided device check with a safe fallback**
+   - **What it shows:** Microphone, browser, and network outcomes are separated. A failed or unavailable network probe is labeled “could not measure,” with retry guidance and a clear next step rather than a fabricated speed score.
+   - **Why it matters:** Device problems should be recoverable and honestly described. Distinguishing a real failure from an unavailable measurement avoids unnecessarily blocking candidates or misrepresenting their connection.
+3. **Candidate privacy and support center**
+   - **What it shows:** Candidates can review information about their interview record, contact the hiring team, and find routes for questions, correction requests, and data requests.
+   - **Why it matters:** Candidate trust does not end when an interview starts. A visible support route makes it practical to raise a concern or correct an inaccurate record, while keeping the employer responsible for deciding and handling the request.
+
+#### 2. Evidence-based assessor review
+
+4. **Skill review anchored in candidate evidence**
+   - **What it shows:** A reviewer sees the candidate’s quoted response, the AI’s interpretation, the relevant rubric anchor, probe coverage, confidence, and a distinct human decision.
+   - **Why it matters:** Separating evidence from interpretation makes the suggestion contestable and keeps the assessor accountable. It reduces the chance that a polished AI score is accepted without checking what the candidate actually said.
+5. **Coverage map and evidence-gap follow-up**
+   - **What it shows:** The screen maps probes and evidence to each skill, highlights what remains unexplored, and offers a follow-up or an explicit “not enough evidence” outcome.
+   - **Why it matters:** Missing evidence is not the same as weak ability. Making the gap visible helps prevent forced ratings and gives the team a consistent way to decide whether to ask a follow-up or leave a skill unrated.
+6. **Human decision history and review provenance**
+   - **What it shows:** A time-ordered history records the interview and analysis, the original AI suggestion, the human reviewer’s decision and reason, linked evidence, and rubric version.
+   - **Why it matters:** Results can be revisited or corrected without losing how they were reached. This is important for internal accountability, candidate questions, and exports that need a reliable review trail.
+
+#### 3. Fair and consistent assessment
+
+7. **Rubric versioning with a transparent change log**
+   - **What it shows:** Published rubric versions remain identifiable, draft changes can be compared before review, and past sessions stay associated with the version they used.
+   - **Why it matters:** Without version history, teams cannot reliably interpret older ratings or explain a changed standard. Immutable versions also help ensure that an edit intended for future interviews does not silently alter an in-progress assessment.
+8. **Assessor calibration with shared practice cases**
+   - **What it shows:** Assessors independently rate a fictional response against rubric anchors, write down the evidence behind their rating, and compare reasoning after submitting.
+   - **Why it matters:** Calibration exposes unclear anchors and differences in interpretation before those differences affect real candidates. Synthetic examples allow practice without exposing candidate records.
+9. **Aggregate fairness monitoring with privacy safeguards**
+   - **What it shows:** Authorized reviewers see aggregate process indicators, minimum-group suppression, and a queue for investigating a possible issue; the screen avoids candidate-level inference or automatic ranking.
+   - **Why it matters:** A team needs a cautious way to notice possible differences in process or evidence coverage. Aggregate signals are prompts for qualified investigation—not proof of bias, a finding about an individual, or a hiring decision.
+
+#### 4. Privacy, security, and operations
+
+10. **Data inventory and retention policy controls**
+    - **What it shows:** The screen lists data categories alongside their purpose, access, proposed retention, deletion process, and policy owners, with draft status clearly marked for review.
+    - **Why it matters:** Teams cannot protect data consistently if no one knows what exists, why it is held, or who owns the rules. Explicit ownership supports security and legal review before a policy is presented as approved.
+11. **Role-based access and auditable record access**
+    - **What it shows:** A permission matrix makes role capabilities visible, while the audit list records both allowed and denied attempts to access candidate records.
+    - **Why it matters:** Least-privilege access limits unnecessary exposure of transcripts and results. An audit trail also helps teams investigate access questions and verify that authorization controls behave as intended.
+12. **Queue health and recoverable provider failures**
+    - **What it shows:** Operators can see queue state, provider status, retryable job failures, attempt counts, and safe diagnostics that do not reveal candidate content or credentials.
+    - **Why it matters:** Background failures should be diagnosable and recoverable without producing a success-shaped empty report or duplicate results. Clear operational states help teams respond while protecting sensitive information.
+
+#### 5. Hiring-team workflow
+
+13. **Candidate comparison against role requirements**
+    - **What it shows:** Several candidates’ reviewed evidence is compared against the same approved role criteria, with missing evidence and follow-ups visible and no synthetic overall ranking.
+    - **Why it matters:** Hiring teams need to discuss relevant evidence consistently, but a single combined score can conceal different evidence quality or unvalidated signals. A criteria-based view supports discussion without pretending the application can make the hiring decision.
+14. **Shared assessment templates with ownership and versions**
+    - **What it shows:** A team library identifies each template’s owner, version, status, included skills, and who can use or edit it.
+    - **Why it matters:** Reuse can save setup time and improve consistency, but only if teams know who maintains a template and which version was used. Access controls and versioning reduce the risk of silent changes to an assessment already in use.
+15. **Evidence-linked reviewer discussion and accessible export**
+    - **What it shows:** Reviewer comments and follow-up questions stay attached to the relevant evidence. The export preview labels AI suggestions separately from human decisions and includes the rubric version and review history.
+    - **Why it matters:** Discussion tied to source evidence is easier to verify than comments detached from context. A clear, accessible, versioned export helps downstream readers understand what the model suggested, what a person decided, and why.
+
 ## Phased delivery plan
 
 ### Phase 1: Make the tests something you can trust
